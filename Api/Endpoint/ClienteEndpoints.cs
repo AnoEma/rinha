@@ -4,7 +4,7 @@ public static class ClienteEndpoints
 {
     public static void AddEndpoints(WebApplication app)
     {
-        app.MapGet("api/clientes/heath-check", () =>
+        app.MapGet("api/clientes/heath", () =>
         {
             return "ok";
         });
