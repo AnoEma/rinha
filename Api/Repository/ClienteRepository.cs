@@ -1,5 +1,12 @@
-﻿namespace Api.Repository;
+﻿using Api.Domain.Interfaces;
+using Api.Domain.Model;
 
-public class ClienteRepository
+namespace Api.Repository;
+
+public class ClienteRepository : IClienteRepository
 {
+    public Task<SaldoClientes> GetBalanceByIdCustomer(int customerId)
+    {
+        throw new NotImplementedException();
+    }
 }
