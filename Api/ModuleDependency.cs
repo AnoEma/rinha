@@ -1,7 +1,9 @@
 ﻿
+using Api.Data;
 using Api.Domain.Interfaces;
 using Api.Repository;
 using Api.Service;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api;
 
@@ -16,6 +18,7 @@ public static class ModuleDependency
 
     private static void AddDataContext(IServiceCollection services, ConfigurationManager configuration)
     {
+        services.AddDbContext<AppDbContext>(x => x.UseNpgsql(configuration.GetConnectionString("ClienteDataConnection")));
     }
 
     private static void AddServices(IServiceCollection services)

@@ -7,4 +7,5 @@ public record Transacoes
     public required int valor { get; init; }
     public required Tipos tipo { get; init; }
     public required string descricao { get; init; }
+    public DateTime? realizada_em { get; set; }
 }
