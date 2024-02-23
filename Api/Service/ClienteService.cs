@@ -18,21 +18,20 @@ public class ClienteService : IClienteService
         _logger = logger;
     }
 
-    public Task<SaldoClientes> GetExtrato(int id)
+    public async Task<Cliente> GetExtrato(int id, CancellationToken cancellation = default)
     {
-        throw new NotImplementedException();
+        var getBalance = await _repository.GetBalanceByCustomerId(id, cancellation);
+        return getBalance;
     }
 
-    public Task PostTransacoes(int id, Transacoes transacoes, CancellationToken cancellation = default)
+    public async Task PostTransacoes(int id, Transacoes transacoes, CancellationToken cancellation = default)
     {
-       var getBalance = _repository.GetBalanceByIdCustomer(id);
+       var getBalance = await _repository.GetBalanceByCustomerId(id, cancellation);
 
         if(getBalance is null)
         {
             _logger.LogInformation($"Não existe saldo para esse id: {id}");
-            return Task.FromCanceled(cancellation);
+            await Task.FromCanceled(cancellation);
         }
-
-        return Task.FromResult(getBalance);
-    }
+    }   
 }

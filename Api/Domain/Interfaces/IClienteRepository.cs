@@ -4,5 +4,6 @@ namespace Api.Domain.Interfaces;
 
 public interface IClienteRepository
 {   
-    Task<SaldoClientes> GetBalanceByIdCustomer(int customerId);
+    Task<Cliente> GetBalanceByCustomerId(int customerId, CancellationToken cancellation = default);
+    Task PostTransactions(CancellationToken cancellation = default);
 }

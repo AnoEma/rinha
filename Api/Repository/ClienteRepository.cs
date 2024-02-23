@@ -5,7 +5,17 @@ namespace Api.Repository;
 
 public class ClienteRepository : IClienteRepository
 {
-    public Task<SaldoClientes> GetBalanceByIdCustomer(int customerId)
+    public Task<int> CreateCustomer(Cliente saldoClientes, CancellationToken cancellation)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Cliente> GetBalanceByCustomerId(int customerId, CancellationToken cancellation = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task PostTransactions(CancellationToken cancellation = default)
     {
         throw new NotImplementedException();
     }

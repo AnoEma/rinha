@@ -8,9 +8,17 @@ public static class ClienteEndpoints
 {
     public static void AddEndpoints(WebApplication app)
     {
-        app.MapGet("api/clientes/heath", () =>
+        app.MapGet("/clientes/heath", () =>
         {
             return "ok";
+        });
+
+        app.MapGet("/clientes/{id}/extrato", async(
+            [FromRoute] int id,
+            [FromServices] IClienteService _service,
+            CancellationToken cancellation) =>
+        {
+            return await _service.GetExtrato(id, cancellation);
         });
 
         app.MapPost("/clientes/{id}/transacoes", async(
@@ -20,7 +28,6 @@ public static class ClienteEndpoints
             CancellationToken cancellation) =>
         {
             await _service.PostTransacoes(id, model, cancellation);
-
         });
     }
 }
